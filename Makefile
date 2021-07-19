@@ -10,15 +10,19 @@ CC			=	clang++
 
 NAME		=	webserv
 
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	#-Wall -Wextra -Werror
 
 SRCDIR		=	srcs
 
 BUILDDIR	=	objs
 
-HDRS		=	hdrs/ParseConfig.hpp
+HDRS		=	hdrs/ParseConfig.hpp \
+				hdrs/ServerNode.hpp \
+				hdrs/LocationNode.hpp
 
 SRCS		=	srcs/ParseConfig.cpp \
+				srcs/ServerNode.cpp \
+				srcs/LocationNode.cpp \
 				srcs/main.cpp
 
 OBJS		=	$(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SRCS:.cpp=.o))

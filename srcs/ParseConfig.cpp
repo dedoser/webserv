@@ -12,12 +12,12 @@
 
 #include "ParseConfig.hpp"
 
-// Constructors:
+// Constructors
 ParseConfig::ParseConfig() {}
 
 ParseConfig::~ParseConfig() {}
 
-// Methods:
+// Methods
 void ParseConfig::getData(std::string file_name)
 {
     std::string str;
@@ -28,12 +28,12 @@ void ParseConfig::getData(std::string file_name)
 
     for (file >> str; !file.eof(); file >> str)
     {
+
         std::cout << str << std::endl;
     }
-
 }
 
-// ParseConfigException:
+// ParseConfigException
 ParseConfig::ParseConfigException::ParseConfigException() {};
 
 ParseConfig::ParseConfigException::ParseConfigException(short num_err) : _num_err(num_err) {}
