@@ -14,7 +14,7 @@
 
 int main(int argc, char **argv)
 {
-    string address_file = "checkfile.txt";
+    std::string address_file = "checkfile.txt";
 
     try
     {
@@ -30,9 +30,9 @@ int main(int argc, char **argv)
         else
             parser.getData(address_file);
     }
-    catch(const exception &e)
+    catch(const std::exception &e)
     {
-        cerr << e.what() << NOTCOLOR << endl;
+        std::cerr << e.what() << NOTCOLOR << std::endl;
     }
 
     return 0;
