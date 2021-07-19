@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.hpp                                         :+:      :+:    :+:   */
+/*   ParserRequest.hpp                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fignigno <fignigno@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/19 15:57:52 by fignigno          #+#    #+#             */
-/*   Updated: 2021/07/19 17:49:02 by fignigno         ###   ########.fr       */
+/*   Created: 2021/07/19 19:13:33 by fignigno          #+#    #+#             */
+/*   Updated: 2021/07/19 19:47:10 by fignigno         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERVER_HPP
-#define SERVER_HPP
+#ifndef PARSER_REQUEST_HPP
+#define PARSER_REQUEST_HPP
 
 #include <string>
-#include <vector>
+#include "Request.hpp"
 
-class Server {
- private:
-	std::string					_port;
-	std::vector<std::string>	_server_names;
- public:
-	void	setPort(const std::string &port);
-	void	addServerName(const std::string &name);
-	const std::string	&getPort() const;
-	const std::string	&getServerName(int num) const;
-	size_t				getSizeOfNames() const;
+class ParserRequest
+{
+private:
+	enum class state {
+		METHOD,
+		URI,
+		PROTOCOL,
+		HEADER,
+		BODY,
+		READY
+	};
+	std::string		_buff;
+	std::string		_curStr;
+	int				_contentLen;
+	state			_state;
+	bool			_hasBody;
+	bool			_isChunked;
+public:
+	ParserRequest();
+	~ParserRequest();
+	void	parseStr(const std::string &)
 };
+
 
 #endif
